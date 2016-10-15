@@ -1,0 +1,25 @@
+{
+  "name": "kyrksok-client",
+  "version": "0.1.0",
+  "description": "Website",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyrkosok/web-client.git"
+  },
+  "author": "Albin Larsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kyrkosok/web-client/issues"
+  },
+  "homepage": "https://github.com/Kyrkosok/web-client#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.9",
+    "gulp-if": "^2.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^1.5.3",
+    "gulp-uncss": "^1.0.5",
+    "gulp-useref": "^3.1.0"
+  }
+}
