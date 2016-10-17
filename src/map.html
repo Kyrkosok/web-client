@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="sv">
 	<head>
-		<title>Kyrksök</title>
+		<title>Map</title>
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -13,21 +13,14 @@
 		<link rel="stylesheet" href="css/app.css" type="text/css" />
 	</head>
 	<body>
-		<main class="fill center-content">
-
-			<img src="logo.svg" class="logo" aria="hidden">
-			<h1 class="sr-only">Kyrksök</h1>
-
-			<div class="search-bar">
-				<input type="text" id="search-box">
-				<input type="button" value="Sök" id="search-btn"><br><br>
-				<a href="#" class="btn">Karta</a>
-			</div>
-
-			<nav class="search-results hidden fill" id="results"></nav>
+		<main class="fill">
+			<form class="top-search">
+				<input type="text">
+				<input type="submit" value="Sök">
+			</form>
+			<div class="map"></div>
 		</main>
 
-		<script src="js/jquery-3.1.1.js"></script>
 		<script src="js/application.js"></script>
 	</body>
 </html>
