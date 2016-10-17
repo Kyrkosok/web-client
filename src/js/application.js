@@ -79,7 +79,7 @@ $('#search-btn').click(function() {
       var listItems = '';
       for (i = 0; i < data.churches.length; i++) {
         var item = data.churches[i];
-        listItems = listItems + '<li><a href="church.html?church=' + item.wikidata + '"><img src="' + item.image_thumbnail + '"><strong>' + item.label + '</strong><p>' + item.wp_description + '</p></a></li>';
+        listItems = listItems + '<li><a href="church.html?church=' + item.wikidata + '"><div><img src="' + item.image_thumbnail + '"></div><strong>' + item.label + '</strong><p>' + item.wp_description + '</p></a></li>';
       }
 
       $('#results').html('<ul>' + listItems + '</ul>');

@@ -66,14 +66,26 @@ a:visited {
   list-style: none;
 }
 
+.search-results ul li {
+  min-height: 75px;
+}
+
 .search-results ul li a {
   color: rgb(51, 51, 51);
   text-decoration: none;
 }
 
-.search-results ul li a img {
-  height: 70px;
+.search-results ul li a div {
+  height: 75px;
   float: left;
+  width: 110px;
+  text-align: center;
+}
+
+.search-results ul li a div img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
 }
 
 .search-results ul li a p {
