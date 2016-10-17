@@ -62,7 +62,7 @@ if (church) {
     $('#church-wikipedia').text(item.wp_description);
     $('#church-wikipedia-link').attr('href', kyrksok.wikipedia + item.wikipedia);
     $('#church-kringla').attr('href', kyrksok.kringla + item.kulturarvsdata);
-    $('#church-bbr').text(item.description);
+    $('#church-bbr').html('<p>' + item.description.replace(/(\n)+/g, '</p><p>').replace(/\n/g, '<br>') + '</p>');
 
     $('#church-header').attr('alt', item.label);
     $('#church-header').attr('src', item.image_original);
