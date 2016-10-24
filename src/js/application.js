@@ -2,7 +2,7 @@ var kyrksok = {
   endpoint: 'http://tools.wmflabs.org/churches',
   kringla: 'http://www.kringla.nu/kringla/objekt?referens=',
   wikipedia: 'https://sv.wikipedia.org/wiki/',
-  commons: 'https://commons.wikimedia.org/wiki/Category:',
+  commons: 'https://commons.wikimedia.org/wiki/',
 
   renderChurch: function(id, callback) {
     var xhr = new XMLHttpRequest();
@@ -66,6 +66,7 @@ if (church) {
 
     $('#church-header').attr('alt', item.label);
     $('#church-header').attr('src', item.image_original);
+    $('#church-commons-link').attr('href', kyrksok.commons + item.image);
   });
 }
 
