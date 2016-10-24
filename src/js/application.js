@@ -76,7 +76,7 @@ if (church) {
   });
 // only trigger 404 if we are at church.html
 } else if(window.location.pathname.indexOf('church.html') !== -1) {
-  window.location = 'http//:kyrksok.se/404.html';
+  window.location = 'http://kyrksok.se/404.html';
 }
 
 $('#bbr-expand').click(function() {
