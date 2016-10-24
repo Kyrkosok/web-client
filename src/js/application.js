@@ -1,5 +1,5 @@
 var kyrksok = {
-  endpoint: 'http://127.0.0.1:5000',
+  endpoint: 'http://tools.wmflabs.org/churches',
   kringla: 'http://www.kringla.nu/kringla/objekt?referens=',
   wikipedia: 'https://sv.wikipedia.org/wiki/',
   commons: 'https://commons.wikimedia.org/wiki/Category:',
