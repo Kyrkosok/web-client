@@ -62,7 +62,13 @@ if (church) {
     $('#church-wikipedia').text(item.wp_description);
     $('#church-wikipedia-link').attr('href', kyrksok.wikipedia + item.wikipedia);
     $('#church-kringla').attr('href', kyrksok.kringla + item.kulturarvsdata);
-    $('#church-bbr').html('<p>' + item.description.replace(/(\n)+/g, '</p><p>').replace(/\n/g, '<br>') + '</p>');
+
+    if (item.description !== '') {
+      $('#church-bbr').html('<p>' + item.description.replace(/(\n)+/g, '</p><p>').replace(/\n/g, '<br>') + '</p>');
+    } else {
+      $('#church-bbr').remove();
+      $('#bbr-expand').remove();
+    }
 
     $('#church-header').attr('alt', item.label);
     $('#church-header').attr('src', item.image_original);
@@ -90,8 +96,8 @@ $('#search-btn').click(function() {
 });
 
 // enter should also trigger search if #search-box has focus
-$('#search-box').keypress(function(event){
-  if(event.keyCode == 13){
+$('#search-box').keypress(function(event) {
+  if (event.keyCode == 13) {
     $('#search-btn').click();
   }
 });
