@@ -73,6 +73,7 @@ if (church) {
     } else {
       $('#church-bbr').remove();
       $('#bbr-expand').remove();
+      $('#bbr-heading').remove();
     }
 
     if (item.commons !== '') {
