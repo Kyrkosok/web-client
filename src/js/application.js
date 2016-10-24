@@ -3,6 +3,7 @@ var kyrksok = {
   kringla: 'http://www.kringla.nu/kringla/objekt?referens=',
   wikipedia: 'https://sv.wikipedia.org/wiki/',
   commons: 'https://commons.wikimedia.org/wiki/',
+  kulturarvsdata: 'http://kulturarvsdata.se/',
 
   renderChurch: function(id, callback) {
     var xhr = new XMLHttpRequest();
@@ -50,6 +51,19 @@ var kyrksok = {
       }
     }
     return false;
+  },
+
+  createBbrLink: function(rawUri) {
+    // taken from:
+    // https://github.com/Abbe98/human-readable-kulturarvsdata
+    String.prototype.insertAt = function(index, string) {
+      return this.substr(0, index) + string + this.substr(index);
+    }
+
+    var re = new RegExp('\/.[^/]+(|\/)$');
+
+    insertIndex = re.exec(rawUri)['index'];
+    return kyrksok.kulturarvsdata + rawUri.insertAt(insertIndex, '/html');
   }
 }
 
@@ -67,6 +81,7 @@ if (church) {
     $('#church-wikipedia').text(item.wp_description);
     $('#church-wikipedia-link').attr('href', kyrksok.wikipedia + item.wikipedia);
     $('#church-kringla').attr('href', kyrksok.kringla + item.kulturarvsdata);
+    $('#church-bbr-link').attr('href', kyrksok.createBbrLink(item.kulturarvsdata));
 
     if (item.description !== '') {
       $('#church-bbr').html('<p>' + item.description.replace(/(\n)+/g, '</p><p>').replace(/\n/g, '<br>') + '</p>');
