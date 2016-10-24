@@ -56,6 +56,11 @@ var kyrksok = {
 var church = kyrksok.getUrlParameter('church');
 if (church) {
   kyrksok.renderChurch(church, function(data) {
+    // if church is not found redirect
+    if (data.church.length < 1) {
+      window.location = 'http://kyrksok.se/404.html';
+    }
+
     item = data.church[0];
     document.title = 'Kyrksök - ' + item.label;
     $('#church-title').text(item.label);
