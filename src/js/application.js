@@ -87,3 +87,10 @@ $('#search-btn').click(function() {
     });
   }
 });
+
+// enter should also trigger search if #search-box has focus
+$('#search-box').keypress(function(event){
+  if(event.keyCode == 13){
+    $('#search-btn').click();
+  }
+});
