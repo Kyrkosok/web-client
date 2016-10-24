@@ -70,6 +70,12 @@ if (church) {
       $('#bbr-expand').remove();
     }
 
+    if (item.commons !== '') {
+      $('#church-commons').attr('href', kyrksok.commons + 'Category:' + item.commons);
+    } else {
+      $('#church-commons').remove();
+    }
+
     $('#church-header').attr('alt', item.label);
     $('#church-header').attr('src', item.image_original);
     $('#church-commons-link').attr('href', kyrksok.commons + item.image);
