@@ -69,6 +69,7 @@ var kyrksok = {
 
 var church = kyrksok.getUrlParameter('church');
 if (church) {
+  $('#loading-screen').css('display', 'block');
   kyrksok.renderChurch(church, function(data) {
     // if church is not found redirect
     if (data.church.length < 1) {
@@ -100,6 +101,8 @@ if (church) {
     $('#church-header').attr('alt', item.label);
     $('#church-header').attr('src', item.image_original);
     $('#church-commons-link').attr('href', kyrksok.commons + item.image);
+
+    $('#loading-screen').css('display', 'none');
   });
 // only trigger 404 if we are at church.html
 } else if(window.location.pathname.indexOf('church.html') !== -1) {
