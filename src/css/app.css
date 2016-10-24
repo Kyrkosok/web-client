@@ -71,6 +71,10 @@ a:visited {
   min-height: 75px;
 }
 
+ul li.not-found {
+  text-align: center;
+}
+
 .search-results ul li a {
   color: rgb(51, 51, 51);
   text-decoration: none;
@@ -147,6 +151,11 @@ button,
   padding: 0px 18px;
   font-weight: 600;
   text-decoration: none;
+}
+
+button:hover,
+.btn:hover {
+  cursor: pointer;
 }
 
 input {

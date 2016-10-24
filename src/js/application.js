@@ -108,11 +108,19 @@ $('#search-btn').click(function() {
   if ($('#search-box').val() !== '') {
     kyrksok.search($('#search-box').val(), function(data) {
       var listItems = '';
-      for (i = 0; i < data.churches.length; i++) {
-        var item = data.churches[i];
-        listItems = listItems + '<li><a href="church.html?church=' + item.wikidata + '"><div><img src="' + item.image_thumbnail + '"></div><strong>' + item.label + '</strong><p>' + item.wp_description + '</p></a></li>';
-      }
+      if (data.churches.length > 0) {
+        for (i = 0; i < data.churches.length; i++) {
+          var item = data.churches[i];
+          listItems = listItems + '<li><a href="church.html?church=' + item.wikidata + '"><div><img src="' + item.image_thumbnail + '"></div><strong>' + item.label + '</strong><p>' + item.wp_description + '</p></a></li>';
+        }
+      } else {
+        listItems = '<li class="not-found"><strong>Inga kyrkor hittades.</strong><br><button id="search-not-found-btn">OK</button></li>';
 
+        $('#results').on('click', '#search-not-found-btn', function() {
+          $('#results').css('display', 'none');
+          $('#results').html('');
+        });
+      }
       $('#results').html('<ul>' + listItems + '</ul>');
       $('#results').css('display', 'block');
     });
