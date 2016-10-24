@@ -74,6 +74,9 @@ if (church) {
     $('#church-header').attr('src', item.image_original);
     $('#church-commons-link').attr('href', kyrksok.commons + item.image);
   });
+// only trigger 404 if we are at church.html
+} else if(window.location.pathname.indexOf('church.html') !== -1) {
+  window.location = 'http//:kyrksok.se/404.html';
 }
 
 $('#bbr-expand').click(function() {

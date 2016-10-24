@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="sv">
+	<head>
+		<title>Kyrksök - {label}</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="mobile-web-app-capable" content="yes" />
+
+		<!--build:css css/kyrksok.min.css  -->
+		<link rel="stylesheet" href="css/app.css" type="text/css" />
+		<!-- endbuild -->
+	</head>
+	<body>
+		<main  class="fill center-content">
+			<h1>404 Sidan Finns Ej</h1>
+			<p>Om du letade efter en kyrka kan du alltid söka efter den:</p>
+			<div class="search-bar">
+				<input type="text" id="search-box">
+				<input type="submit" value="Sök" id="search-btn">
+			</div>
+
+			<nav class="search-results hidden fill" id="results"></nav>
+		</main>
+
+		<!--build:js js/kyrksok.min.js  -->
+		<script src="js/jquery-3.1.1.js"></script>
+		<script src="js/application.js"></script>
+		<!-- endbuild -->
+	</body>
+</html>
