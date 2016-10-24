@@ -85,8 +85,17 @@ if (church) {
   window.location = 'http://kyrksok.se/404.html';
 }
 
+var bbrExpanded = false;
 $('#bbr-expand').click(function() {
-  $('#church-bbr').css('height', '100%');
+  if (!bbrExpanded) {
+    $('#church-bbr').css('height', '100%');
+    $('#bbr-expand').text('Visa mindre');
+    bbrExpanded = true;
+  } else {
+    $('#church-bbr').css('height', '54px');
+    $('#bbr-expand').text('Expandera');
+    bbrExpanded = false;
+  }
 });
 
 $('#search-btn').click(function() {
