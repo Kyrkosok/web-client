@@ -21,6 +21,12 @@ gulp.task('cleanup', ['build'], function() {
   return del([
     'dist/js/application.js',
     'dist/js/jquery-3.1.1.js',
-    'dist/css/app.css'
+    'dist/js/leaflet.js',
+    'dist/js/leaflet.markercluster.js',
+    'dist/js/map.js',
+    'dist/js/MarkerCluster.css',
+    'dist/js/leaflet.css',
+    'dist/css/app.css',
+    'dist/css/map.css'
     ]);
 });

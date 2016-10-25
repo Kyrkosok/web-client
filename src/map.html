@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="sv">
 	<head>
-		<title>Map</title>
+		<title>Kyrksök - Karta</title>
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -10,17 +10,35 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="mobile-web-app-capable" content="yes" />
 
+		<!--build:css css/kyrksok.min.css  -->
 		<link rel="stylesheet" href="css/app.css" type="text/css" />
+		<!-- endbuild -->
+
+		<!--build:css css/kyrksok.map.min.css  -->
+		<link rel="stylesheet" href="js/leaflet.css" type="text/css" />
+		<link rel="stylesheet" href="js/MarkerCluster.css" type="text/css" />
+		<link rel="stylesheet" href="css/map.css" type="text/css" />
+		<!-- endbuild -->
 	</head>
 	<body>
 		<main class="fill">
-			<form class="top-search">
-				<input type="text">
-				<input type="submit" value="Sök">
-			</form>
-			<div class="map"></div>
+			<div class="search-bar">
+				<input type="text" id="search-box">
+				<input type="submit" value="Sök" id="search-btn">
+			</div>
+			<div id="leaflet"></div>
+			<nav class="search-results hidden fill" id="results"></nav>
 		</main>
 
+		<!--build:js js/kyrksok.min.js  -->
+		<script src="js/jquery-3.1.1.js"></script>
 		<script src="js/application.js"></script>
+		<!-- endbuild -->
+
+		<!--build:js js/kyrksok-map.min.js  -->
+		<script src="js/leaflet.js"></script>
+		<script src="js/leaflet.markercluster.js"></script>
+		<script src="js/map.js"></script>
+		<!-- endbuild -->
 	</body>
 </html>

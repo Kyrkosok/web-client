@@ -33,14 +33,6 @@ var kyrksok = {
     xhr.send();
   },
 
-  renderMarkers: function(south, west, north, east) {
-    // #TODO
-  },
-
-  leaflet: function() {
-    // #TODO
-  },
-
   getUrlParameter: function(parameter) {
     var url = window.location.search.substring(1);
     var vars = url.split('&');
