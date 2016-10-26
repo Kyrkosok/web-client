@@ -75,6 +75,7 @@ if (church) {
     $('#church-wikipedia-link').attr('href', kyrksok.wikipedia + item.wikipedia);
     $('#church-kringla').attr('href', kyrksok.kringla + item.kulturarvsdata);
     $('#church-bbr-link').attr('href', kyrksok.createBbrLink(item.kulturarvsdata));
+    $('#church-upload').attr('href', 'https://commons.wikimedia.org/w/index.php?title=Special:UploadWizard&campaign=kyrksok&id=' + item.kulturarvsdata + '&categories='+ item.commons);
 
     if (item.description !== '') {
       $('#church-bbr').html('<p>' + item.description.replace(/(\n)+/g, '</p><p>').replace(/\n/g, '<br>') + '</p>');

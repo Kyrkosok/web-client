@@ -105,6 +105,7 @@ ul li.not-found {
 }
 
 header {
+  padding-bottom:10px;
   text-align: center;
   position: relative;
 }
@@ -116,13 +117,17 @@ header img {
 }
 
 header a {
-  bottom: 10px;
+  bottom: -20px;
   right: 5px;
   padding: 5px;
   border-radius: 3px;
   background: rgb(250, 243, 221);
   position: absolute;
   text-decoration: none;
+}
+
+header #church-upload {
+  right: 90px;
 }
 
 .logo {
