@@ -97,10 +97,12 @@ ul li.not-found {
   height: 100%;
   width: auto;
   max-width: 100%;
+  padding: 10px;
 }
 
 .search-results ul li a p {
   margin-top: 2px;
+  margin-left: 110px;
 }
 
 
