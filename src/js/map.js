@@ -43,11 +43,7 @@ L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
 
 var markers = L.markerClusterGroup();
 
-map.on('moveend', function() {
-  renderMarkers();
-});
-
-map.on('whenReady', function() {
+map.on('load', function() {
   renderMarkers();
 });
 
