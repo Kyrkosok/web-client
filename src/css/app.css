@@ -178,6 +178,14 @@ input {
     width: 600px;
     margin: auto;
   }
+  #results{
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  .fill{
+    width: auto;
+    height: auto;
+  }
 }
 
 @media (max-width: 600px) {
@@ -185,6 +193,7 @@ input {
     max-width: 100%;
     height: auto;
   }
+  
 }
 
 #loading-screen {
