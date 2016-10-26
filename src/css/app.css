@@ -198,6 +198,24 @@ input {
   background: #fff;
 }
 
+#church-wikipedia-error-spottet-dialog {
+  text-align: center;
+}
+
+/*Dialog*/
+.ui-dialog {
+  background: darkgray;
+  border: thin gray;
+  border-radius: 1em;
+  opacity: 0.9;
+}
+
+.ui-dialog-titlebar-close {
+  /*opacity: 0;*/
+  background: url("images/close.png");
+}
+/*Dialog*/
+
 .loading,
 .loading:after {
   border-radius: 50%;

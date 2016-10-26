@@ -11,6 +11,7 @@
 		<meta name="mobile-web-app-capable" content="yes" />
 
 		<!--build:css css/kyrksok.min.css  -->
+		<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
 		<link rel="stylesheet" href="css/app.css" type="text/css" />
 		<!-- endbuild -->
 	</head>
@@ -30,7 +31,7 @@
 					<h1 id="church-title"></h1>
 					<p id="church-wikipedia"></p>
 					<a id="church-wikipedia-link" href="#">Läs mer på Wikipedia</a>
-					<!--<a id="church-wikipedia-error-spotted-link" class="align-right" href="#">Fel i texten?</a>-->
+					<a id="church-wikipedia-error-spotted-link" class="align-right" href="#">Fel i texten?</a>
 					<h2 id="bbr-heading">Bebyggelseregistret</h2>
 					<p id="church-bbr" class="expandable-p"></p>
 					<button id="bbr-expand">Expandera</button>
@@ -47,8 +48,13 @@
 			</div>
 		</main>
 
+		<div id="church-wikipedia-error-spottet-dialog" class="hidden">
+			Vad vill du göra?
+		</div>
+
 		<!--build:js js/kyrksok.min.js  -->
 		<script src="js/thirdParty/jquery-3.1.1.js"></script>
+		<script src="js/thirdParty/jquery-ui.min.js"></script>
 		<script src="js/application.js"></script>
 		<!-- endbuild -->
 	</body>

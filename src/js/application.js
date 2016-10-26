@@ -137,6 +137,26 @@ $('#search-btn').click(function() {
   }
 });
 
+$('#church-wikipedia-error-spotted-link').click(function(){
+
+  $('#church-wikipedia-error-spottet-dialog').dialog({
+    buttons: [
+      {
+        text: 'Fixa själv',
+
+      },
+      {
+        text: 'Rapportera'
+      }
+    ],
+    dialogClass: "no-close",
+    showText: false
+  });
+
+  $('#church-wikipedia-error-spottet-dialog').dialog('open');
+
+})
+
 // enter should also trigger search if #search-box has focus
 $('#search-box').keypress(function(event) {
   if (event.keyCode == 13) {
