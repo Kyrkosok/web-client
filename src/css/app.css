@@ -36,6 +36,10 @@ strong {
   justify-content: center;
 }
 
+.align-right{ 
+  float: right;
+}
+
 a {
   color: #75AD66;
 }
