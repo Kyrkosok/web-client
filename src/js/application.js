@@ -61,6 +61,7 @@ var kyrksok = {
 
 var church = kyrksok.getUrlParameter('church');
 if (church) {
+  
   $('#loading-screen').css('display', 'block');
   kyrksok.renderChurch(church, function(data) {
     // if church is not found redirect
@@ -69,8 +70,12 @@ if (church) {
     }
 
     item = data.church[0];
+
+    var mailText = 'mailto:bebyggelseregistret@raa.se?subject=Angående ' + item.label + ' - via kyrksok.se&body=I kyrkan med id: ' + item.kulturarvsdata + ' har jag följande att anmärka: ';
+    
     document.title = 'Kyrksök - ' + item.label;
     $('#church-title').text(item.label);
+    $('#church-report').attr('href', mailText);
     $('#church-wikipedia').text(item.wp_description);
     $('#church-wikipedia-link').attr('href', kyrksok.wikipedia + item.wikipedia);
     $('#church-kringla').attr('href', kyrksok.kringla + item.kulturarvsdata);
@@ -106,10 +111,12 @@ $('#bbr-expand').click(function() {
   if (!bbrExpanded) {
     $('#church-bbr').css('height', '100%');
     $('#bbr-expand').text('Visa mindre');
+    $('#church-report').show();
     bbrExpanded = true;
   } else {
     $('#church-bbr').css('height', '54px');
     $('#bbr-expand').text('Expandera');
+    $('#church-report').hide();
     bbrExpanded = false;
   }
 });
