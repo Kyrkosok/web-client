@@ -173,6 +173,13 @@ input {
   color: #fff;
 }
 
+.about {
+  text-align: left;
+  max-width: 600px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 @media (min-width: 600px) {
   main {
     width: 600px;
