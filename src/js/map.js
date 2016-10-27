@@ -1,4 +1,5 @@
 function renderMarkers() {
+  $('#loading-screen-map').css('display', 'block');
   var xhr = new XMLHttpRequest();
   map.getBounds();
   xhr.open('GET', kyrksok.endpoint + '/churches/bbox?south='
@@ -10,6 +11,7 @@ function renderMarkers() {
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
+      $('#loading-screen-map').css('display', 'none');
       if (xhr.status >= 200 && xhr.status < 300) {
         var result = JSON.parse(xhr.responseText);
         if (result.churches.length > 0) {
