@@ -65,6 +65,7 @@ a:visited {
 
 .search-results ul {
   max-width: 50em;
+  margin:  auto;
   list-style: none;
   padding: 0;
 }
@@ -93,7 +94,6 @@ ul li.not-found {
   height: 100%;
   width: auto;
   max-width: 100%;
-  padding: 10px;
 }
 
 .search-results ul li a p {
