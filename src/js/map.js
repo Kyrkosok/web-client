@@ -16,16 +16,12 @@ function renderMarkers() {
         var result = JSON.parse(xhr.responseText);
         if (result.churches.length > 0) {
 
-         //map.removeLayer(markers);
-         markers.clearLayers();
-
           for (i = 0; i < result.churches.length; i++) {
             var item = result.churches[i];
 
             var location = new L.LatLng(item.lat, item.lon, true);
-            var marker = new L.Marker(location).on('click', function() {
-              window.location = 'http://kyrksok.se/church.html?church=' + item.wikidata;
-            });
+            var marker = new L.Marker(location);
+            marker.bindPopup('<a href="http://kyrksok.se/church.html?church=' + item.wikidata + '">' + item.label + '</a>');
             markers.addLayer(marker);
           }
           map.addLayer(markers);
@@ -37,19 +33,18 @@ function renderMarkers() {
 }
 
 map = L.map('leaflet');
-L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors & <a href="http://openstreetmap.se/">OpenStreetMap Sverige</a>',
   maxZoom: 18,
   subdomains: 'abc'
 }).addTo(map);
 
-var markers = L.markerClusterGroup();
-
-map.on('moveend', function() {
-  renderMarkers();
+var markers = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  maxClusterRadius: 60
 });
 
-map.on('whenReady', function() {
+map.whenReady(function(e) {
   renderMarkers();
 });
 
