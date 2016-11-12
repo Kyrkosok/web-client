@@ -44,7 +44,7 @@ var markers = L.markerClusterGroup({
   maxClusterRadius: 60
 });
 
-map.whenReady(function(e) {
+map.on('load', function() {
   renderMarkers();
 });
 
