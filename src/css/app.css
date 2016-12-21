@@ -1,7 +1,5 @@
 
 html * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -161,6 +159,13 @@ button,
 button:hover,
 .btn:hover {
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .btn {
+    width: calc(100% - 10px);
+    margin: 5px;
+  }
 }
 
 input {
