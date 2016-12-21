@@ -195,6 +195,18 @@ input {
   padding-right: 5px;
 }
 
+.footer {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  background: rgb(75, 119, 64);
+  color: rgb(255, 255, 255) !important;
+  font-size: 1rem;
+  height: 26px;
+  line-height: 26px;
+  text-decoration: none;
+}
+
 @media (min-width: 600px) {
   main {
     width: 600px;
