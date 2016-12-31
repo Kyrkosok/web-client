@@ -207,6 +207,11 @@ input {
   text-decoration: none;
 }
 
+.church {
+  width: inherit;
+  margin: auto;
+}
+
 @media (min-width: 600px) {
   main {
     width: 600px;
