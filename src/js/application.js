@@ -61,7 +61,6 @@ var kyrksok = {
 
 var church = kyrksok.getUrlParameter('church');
 if (church) {
-  
   $('#loading-screen').css('display', 'block');
   kyrksok.renderChurch(church, function(data) {
     // if church is not found redirect
@@ -69,35 +68,34 @@ if (church) {
       window.location = 'http://kyrksok.se/404.html';
     }
 
-    item = data.church[0];
 
-    var mailText = 'mailto:bebyggelseregistret@raa.se?subject=Angående ' + item.label + ' - via kyrksok.se&body=I kyrkan med id: ' + item.kulturarvsdata + ' har jag följande att anmärka: ';
+    var mailText = 'mailto:bebyggelseregistret@raa.se?subject=Angående ' + church.label + ' - via kyrksok.se&body=I kyrkan med id: ' + church.kulturarvsdata + ' har jag följande att anmärka: ';
     
-    document.title = 'Kyrksök - ' + item.label;
-    $('#church-title').text(item.label);
+    document.title = 'Kyrksök - ' + church.label;
+    $('#church-title').text(church.label);
     $('#church-report').attr('href', mailText);
-    $('#church-wikipedia').text(item.wp_description);
-    $('#church-wikipedia-link').attr('href', kyrksok.wikipedia + item.wikipedia);
-    $('#church-kringla').attr('href', kyrksok.kringla + item.kulturarvsdata);
-    $('#church-bbr-link').attr('href', kyrksok.createBbrLink(item.kulturarvsdata));
+    $('#church-wikipedia').text(church.wp_description);
+    $('#church-wikipedia-link').attr('href', kyrksok.wikipedia + church.wikipedia);
+    $('#church-kringla').attr('href', kyrksok.kringla + church.kulturarvsdata);
+    $('#church-bbr-link').attr('href', kyrksok.createBbrLink(church.kulturarvsdata));
 
-    if (item.description !== '') {
-      $('#church-bbr').html('<p>' + item.description.replace(/(\n)+/g, '</p><p>').replace(/\n/g, '<br>') + '</p>');
+    if (church.description !== '') {
+      $('#church-bbr').html('<p>' + church.description.replace(/(\n)+/g, '</p><p>').replace(/\n/g, '<br>') + '</p>');
     } else {
       $('#church-bbr').remove();
       $('#bbr-expand').remove();
       $('#bbr-heading').remove();
     }
 
-    if (item.commons !== '') {
-      $('#church-commons').attr('href', kyrksok.commons + 'Category:' + item.commons);
+    if (church.commons !== '') {
+      $('#church-commons').attr('href', kyrksok.commons + 'Category:' + church.commons);
     } else {
       $('#church-commons').remove();
     }
 
-    $('#church-header').attr('alt', item.label);
-    $('#church-header').attr('src', item.image_original);
-    $('#church-commons-link').attr('href', kyrksok.commons + item.image);
+    $('#church-header').attr('alt', church.label);
+    $('#church-header').attr('src', church.image_original);
+    $('#church-commons-link').attr('href', kyrksok.commons + church.image);
 
     $('#loading-screen').css('display', 'none');
   });
