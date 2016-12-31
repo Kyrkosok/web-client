@@ -195,6 +195,10 @@ input {
   padding-right: 5px;
 }
 
+.about p {
+  width: inherit;
+}
+
 .footer {
   display: block;
   text-align: center;
