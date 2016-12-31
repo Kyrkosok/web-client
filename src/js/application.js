@@ -68,6 +68,7 @@ if (church) {
       window.location = 'http://kyrksok.se/404.html';
     }
 
+    church = data['church'][0];
 
     var mailText = 'mailto:bebyggelseregistret@raa.se?subject=Angående ' + church.label + ' - via kyrksok.se&body=I kyrkan med id: ' + church.kulturarvsdata + ' har jag följande att anmärka: ';
     
