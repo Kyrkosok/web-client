@@ -116,6 +116,7 @@ header img {
   height: 100%;
   width: auto;
   max-height: 350px;
+  max-width: 100%;
 }
 
 header a {
@@ -225,7 +226,6 @@ input {
 
 @media (max-width: 600px) {
   header img {
-    max-width: 100%;
     height: auto;
   }
 }
