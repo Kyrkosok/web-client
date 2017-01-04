@@ -116,6 +116,8 @@ header img {
   height: 100%;
   width: auto;
   max-height: 350px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 header a {
