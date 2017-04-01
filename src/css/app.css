@@ -26,6 +26,8 @@ strong {
   width: 100%;
   min-height: 100vh;
   height: auto;
+  position: absolute;
+  background-color: #fff;
 }
 
 .center-content {
