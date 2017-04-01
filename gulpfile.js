@@ -5,15 +5,18 @@ var uglify = require('gulp-uglify');
 var autoprefixer = require('gulp-autoprefixer');
 var useref = require('gulp-useref');
 var del = require('del');
+var using = require('gulp-using');
 
 gulp.task('default', ['build', 'cleanup']);
 
 gulp.task('build', function() {
   return gulp.src('./src/**/*')
+    .pipe(using({}))
     .pipe(gulpIf('*.html', useref()))
-    .pipe(gulpIf('/js/*.js', uglify()))
-    .pipe(gulpIf('/css/*.css', autoprefixer()))
-    .pipe(gulpIf('/css/*.css', cleanCSS()))
+
+    .pipe(gulpIf('js/*.js', uglify()))
+    .pipe(gulpIf('css/*.css', autoprefixer()))
+    .pipe(gulpIf('css/*.css', cleanCSS()))
     .pipe(gulp.dest('dist'))
 });
 
