@@ -1,5 +1,5 @@
 var kyrksok = {
-  endpoint: 'http://tools.wmflabs.org/churches',
+  endpoint: 'https://tools.wmflabs.org/churches',
   kringla: 'http://www.kringla.nu/kringla/objekt?referens=',
   wikipedia: 'https://sv.wikipedia.org/wiki/',
   commons: 'https://commons.wikimedia.org/wiki/',
