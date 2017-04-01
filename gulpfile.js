@@ -20,7 +20,6 @@ gulp.task('build', function() {
 gulp.task('cleanup', ['build'], function() {
   return del([
     'dist/js/application.js',
-    'dist/js/jquery-3.1.1.js',
     'dist/js/leaflet.js',
     'dist/js/leaflet.markercluster.js',
     'dist/js/map.js',
