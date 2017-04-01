@@ -25,9 +25,11 @@ gulp.task('cleanup', ['build'], function() {
     'dist/js/application.js',
     'dist/js/leaflet.js',
     'dist/js/leaflet.markercluster.js',
+    'dist/js/leaflet.locate.min.js',
     'dist/js/map.js',
     'dist/css/MarkerCluster.css',
     'dist/css/leaflet.css',
+    'dist/css/leaflet.locate.min.css',
     'dist/css/app.css',
     'dist/css/map.css'
     ]);

@@ -33,10 +33,21 @@ function renderMarkers() {
 }
 
 map = L.map('leaflet');
+
 L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors & <a href="http://openstreetmap.se/">OpenStreetMap Sverige</a>',
   maxZoom: 18,
   subdomains: 'abc'
+}).addTo(map);
+
+L.control.locate({
+  strings: {
+    title: 'Visa mig var jag är.'
+  },
+  locateOptions: {
+    enableHighAccuracy: true,
+    maxZoom: 13
+  }
 }).addTo(map);
 
 var markers = L.markerClusterGroup({
