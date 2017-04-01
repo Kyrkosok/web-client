@@ -2,11 +2,7 @@ function renderMarkers() {
   document.getElementById('loading-screen-map').style.display = 'block';
   var xhr = new XMLHttpRequest();
   map.getBounds();
-  xhr.open('GET', kyrksok.endpoint + '/churches/bbox?south='
-    + map.getBounds()._southWest.lat + '&east='
-    + map.getBounds()._southWest.lng + '&north='
-    + map.getBounds()._northEast.lat + '&west='
-    + map.getBounds()._northEast.lng
+  xhr.open('GET', kyrksok.endpoint + '/churches/bbox?south=51.42&east=-3.38&north=70.45&west=32.12'
   , true);
 
   xhr.onreadystatechange = function() {
