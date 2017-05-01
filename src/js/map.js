@@ -1,29 +1,23 @@
 function renderMarkers() {
+  document.getElementById('loading-screen-map').style.display = 'block';
   var xhr = new XMLHttpRequest();
   map.getBounds();
-  xhr.open('GET', kyrksok.endpoint + '/churches/bbox?south='
-    + map.getBounds()._southWest.lat + '&east='
-    + map.getBounds()._southWest.lng + '&north='
-    + map.getBounds()._northEast.lat + '&west='
-    + map.getBounds()._northEast.lng
+  xhr.open('GET', kyrksok.endpoint + '/churches/bbox?south=51.42&east=-3.38&north=70.45&west=32.12'
   , true);
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
+      document.getElementById('loading-screen-map').style.display = 'none';
       if (xhr.status >= 200 && xhr.status < 300) {
         var result = JSON.parse(xhr.responseText);
         if (result.churches.length > 0) {
-
-         //map.removeLayer(markers);
-         markers.clearLayers();
 
           for (i = 0; i < result.churches.length; i++) {
             var item = result.churches[i];
 
             var location = new L.LatLng(item.lat, item.lon, true);
-            var marker = new L.Marker(location).on('click', function() {
-              window.location = 'http://kyrksok.se/church.html?church=' + item.wikidata;
-            });
+            var marker = new L.Marker(location);
+            marker.bindPopup('<a href="http://kyrksok.se/church.html?church=' + item.wikidata + '">' + item.label + '</a>');
             markers.addLayer(marker);
           }
           map.addLayer(markers);
@@ -35,19 +29,29 @@ function renderMarkers() {
 }
 
 map = L.map('leaflet');
-L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+
+L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors & <a href="http://openstreetmap.se/">OpenStreetMap Sverige</a>',
   maxZoom: 18,
   subdomains: 'abc'
 }).addTo(map);
 
-var markers = L.markerClusterGroup();
+L.control.locate({
+  strings: {
+    title: 'Visa mig var jag är.'
+  },
+  locateOptions: {
+    enableHighAccuracy: true,
+    maxZoom: 13
+  }
+}).addTo(map);
 
-map.on('moveend', function() {
-  renderMarkers();
+var markers = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  maxClusterRadius: 60
 });
 
-map.on('whenReady', function() {
+map.on('load', function() {
   renderMarkers();
 });
 

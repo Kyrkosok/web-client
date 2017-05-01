@@ -1,6 +1,5 @@
+
 html * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -27,6 +26,8 @@ strong {
   width: 100%;
   min-height: 100vh;
   height: auto;
+  position: absolute;
+  background-color: #fff;
 }
 
 .center-content {
@@ -64,7 +65,10 @@ a:visited {
 }
 
 .search-results ul {
+  max-width: 50em;
+  margin:  auto;
   list-style: none;
+  padding: 0;
 }
 
 .search-results ul li {
@@ -95,6 +99,7 @@ ul li.not-found {
 
 .search-results ul li a p {
   margin-top: 2px;
+  margin-left: 110px;
 }
 
 
@@ -113,6 +118,8 @@ header img {
   height: 100%;
   width: auto;
   max-height: 350px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 header a {
@@ -158,6 +165,13 @@ button:hover,
   cursor: pointer;
 }
 
+@media (max-width: 600px) {
+  .btn {
+    width: calc(100% - 10px);
+    margin: 5px;
+  }
+}
+
 input {
   display: inline-block;
   font-size: 1rem;
@@ -171,6 +185,39 @@ input {
   padding-top: 0px;
   background-color: #4B7740;
   color: #fff;
+}
+
+#church-report {
+  float: right;
+  margin-right:10px;
+}
+
+.about {
+  text-align: left;
+  max-width: 600px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.about p {
+  width: inherit;
+}
+
+.footer {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  background: rgb(75, 119, 64);
+  color: rgb(255, 255, 255) !important;
+  font-size: 1rem;
+  height: 26px;
+  line-height: 26px;
+  text-decoration: none;
+}
+
+.church {
+  width: inherit;
+  margin: auto;
 }
 
 @media (min-width: 600px) {
