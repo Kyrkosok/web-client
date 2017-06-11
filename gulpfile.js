@@ -31,6 +31,7 @@ gulp.task('cleanup', ['build'], function() {
     'dist/css/leaflet.css',
     'dist/css/leaflet.locate.min.css',
     'dist/css/app.css',
-    'dist/css/map.css'
+    'dist/css/map.css',
+    'dist/css/font.awesome.min.css'
     ]);
 });
