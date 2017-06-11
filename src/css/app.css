@@ -1,4 +1,3 @@
-
 html * {
   box-sizing: border-box;
 }
@@ -239,6 +238,7 @@ input {
   left: 0;
   position: fixed;
   background: #fff;
+  z-index: 2;
 }
 
 .loading,
