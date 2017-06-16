@@ -27,11 +27,18 @@ gulp.task('cleanup', ['build'], function() {
     'dist/js/leaflet.markercluster.js',
     'dist/js/leaflet.locate.min.js',
     'dist/js/map.js',
+    'dist/js/three.min.js',
+    'dist/js/vr-controls.js',
+    'dist/js/vr-effect.js',
+    'dist/js/vr.js',
+    'dist/js/webvr-polyfill.js',
+    'dist/js/webvr-ui.js',
     'dist/css/MarkerCluster.css',
     'dist/css/leaflet.css',
     'dist/css/leaflet.locate.min.css',
     'dist/css/app.css',
     'dist/css/map.css',
+    'dist/css/vr.css',
     'dist/css/font.awesome.min.css'
     ]);
 });

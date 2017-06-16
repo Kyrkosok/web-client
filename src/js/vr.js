@@ -1,10 +1,46 @@
+function getUrlParameter(parameter) {
+  var url = window.location.search.substring(1);
+  var vars = url.split('&');
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split('=');
+    if (pair[0].toLowerCase() == parameter.toLowerCase()) {
+      return pair[1];
+    }
+  }
+  return false;
+}
+
+var vrItems = {
+  10713923: {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/6/61/Vemdalens_kyrka_klotbild.jpg',
+    commons: 'https://commons.wikimedia.org/wiki/File:Vemdalens_kyrka_klotbild.jpg',
+  },
+  10501350: {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/6/67/F%C3%B6rk%C3%A4rla_kyrka_20160421_06.jpg',
+    commons: 'https://commons.wikimedia.org/wiki/File:Förkärla_kyrka_20160421_06.jpg',
+  }
+}
+
+var q = getUrlParameter('q');
+var data;
+if (q) {
+  if (vrItems[q]) {
+    data = vrItems[q];
+    document.getElementById('attribution').href = data.commons;
+  } else {
+    window.location = 'https://kyrksok.se/404.html';
+  }
+} else {
+  window.location = 'https://kyrksok.se/404.html';
+}
+
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
 camera.target = new THREE.Vector3(0, 0, 0);
 camera.lookAt(camera.target);
 var geometry = new THREE.SphereGeometry(500, 60, 40);
 
-var image = 'https://upload.wikimedia.org/wikipedia/commons/6/67/F%C3%B6rk%C3%A4rla_kyrka_20160421_06.jpg';
+var image = data.image;
 var texture = new THREE.TextureLoader().load(image, function() {
   document.getElementById('loading-screen').style.display = 'none';
 });
