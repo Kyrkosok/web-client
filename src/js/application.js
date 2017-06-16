@@ -2,6 +2,18 @@ Element.prototype.remove = function() {
   this.parentElement.removeChild(this);
 }
 
+Array.prototype.contains = function(item) {
+  var index = this.indexOf(item);
+
+  if (index > -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+var vrItems = [10713923, 10501350];
+
 var kyrksok = {
   endpoint: 'https://tools.wmflabs.org/churches',
   kringla: 'http://www.kringla.nu/kringla/objekt?referens=',
@@ -119,6 +131,13 @@ if (church) {
           bbrExpanded = false;
         }
       });
+    }
+
+    if (vrItems.contains(church.wikidata)) {
+      document.getElementById('vr-link').href = 'vr.html?q=' + church.wikidata;
+    } else {
+      document.getElementById('vr-heading').remove();
+      document.getElementById('vr-link').remove();
     }
   });
 // only trigger 404 if we are at church.html
