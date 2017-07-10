@@ -1,5 +1,5 @@
 function renderMarkers() {
-  document.getElementById('loading-screen-map').style.display = 'block';
+  document.getElementById('loading-screen').style.display = 'block';
   var xhr = new XMLHttpRequest();
   map.getBounds();
   xhr.open('GET', kyrksok.endpoint + '/churches/bbox?south=51.42&east=-3.38&north=70.45&west=32.12'
@@ -7,7 +7,7 @@ function renderMarkers() {
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
-      document.getElementById('loading-screen-map').style.display = 'none';
+      document.getElementById('loading-screen').style.display = 'none';
       if (xhr.status >= 200 && xhr.status < 300) {
         var result = JSON.parse(xhr.responseText);
         if (result.churches.length > 0) {
