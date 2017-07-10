@@ -147,6 +147,7 @@ if (church) {
 
 document.getElementById('search-btn').addEventListener('click', function() {
   if (document.getElementById('search-box').value !== '') {
+    document.getElementById('loading-screen').style.display = 'block';
     kyrksok.search(document.getElementById('search-box').value, function(data) {
       var listItems = '';
       if (data.churches.length > 0) {
@@ -166,6 +167,7 @@ document.getElementById('search-btn').addEventListener('click', function() {
       }
       document.getElementById('results').innerHTML = '<ul>' + listItems + '</ul>';
       document.getElementById('results').style.display = 'block';
+      document.getElementById('loading-screen').style.display = 'none';
     });
   }
 });
