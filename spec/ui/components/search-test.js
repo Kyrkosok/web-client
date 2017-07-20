@@ -56,10 +56,10 @@ function searchTest(target, page) {
       }).then((elm) => {
         elm.click();
         this.driver.getCurrentUrl().then((url) => {
-          expect(url).toContain('/church.html?church=')
+          expect(url).toContain('/church.html?church=');
+        }).then(() => {
+          done();
         });
-      }).finally(() => {
-        done();
       });
 
     }, 30000);
@@ -72,10 +72,9 @@ function searchTest(target, page) {
         var resultsContainer = this.driver.findElement(selenium.By.id('results'));
         this.driver.wait(selenium.until.elementIsNotVisible(resultsContainer), 50).catch((e) => {
             fail('"No results"(OK) button failed to close the results');
+        }).then(() => {
+          done();
         });
-
-      }).finally(() => {
-        done();
       });
 
     }, 30000);
