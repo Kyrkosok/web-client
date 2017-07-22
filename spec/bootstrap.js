@@ -17,3 +17,6 @@ pages.church(rootUrl + '/church.html?church=10548139');
 // test map.html
 components.search(rootUrl + '/map.html', 'map');
 pages.map(rootUrl + '/map.html');
+
+// test 404.html
+components.search(rootUrl, 'index');
