@@ -16,11 +16,6 @@ Especially, see the [wireframe](http://bit.ly/trådmodell) to get a sense of the
 
 Include the ChromeDriver location in your `PATH` environment variable.
 
-Optional:
-
- - Python 3.4+
-
-
 ### Setup
 
 ```bash
@@ -31,18 +26,17 @@ cd kyrksok-client
 npm install
 ```
 
-Running the client (Python example):
+Running the client (Source not compiled):
 
 ```bash
-cd src && python -m http.server --bind 127.0.0.1 3000
+npm start
 ```
 
 ### Testing
 
-Make sure you have the client running at `127.0.0.1:3000`.
-
 ```bash
-jasmine spec/bootstrap.js
+npm start
+npm test
 ```
 
 ### Building

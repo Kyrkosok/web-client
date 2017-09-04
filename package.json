@@ -12,6 +12,10 @@
     "url": "https://github.com/Kyrkosok/web-client/issues"
   },
   "homepage": "https://github.com/Kyrkosok/web-client#readme",
+  "scripts": {
+    "start": "http-server ./src -p 3000 -a 127.0.0.1 -o",
+    "test": "jasmine spec/bootstrap.js --stop-on-failure=true"
+  },
   "devDependencies": {
     "del": "^2.2.1",
     "gulp": "^3.9.1",
@@ -22,6 +26,7 @@
     "gulp-uglify": "^1.5.3",
     "gulp-useref": "^3.1.0",
     "gulp-using": "^0.1.1",
+    "http-server": "^0.10.0",
     "jasmine": "^2.6.0",
     "selenium-webdriver": "^3.4.0"
   }
