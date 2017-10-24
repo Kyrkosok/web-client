@@ -72,22 +72,6 @@ var kyrksok = {
 
     insertIndex = re.exec(rawUri)['index'];
     return kyrksok.kulturarvsdata + rawUri.insertAt(insertIndex, '/html');
-  },
-
-  initWikiLovesMonuments: function(rawUri, label) {
-    // ref https://sv.wikipedia.org/wiki/Mall:BBR-länk?veaction=editsource
-    var localID = Number.parseInt(rawUri.substr(14));
-    if (rawUri.includes('bbra/')) {
-      return kyrksok.renderWLM(localID);
-    } else if (rawUri.includes('bbr/') && (localID < 21420000013684)) {
-      return kyrksok.renderWLM(localID);
-    }
-
-    return '';
-  },
-
-  renderWLM: function(id, label) {
-    return '<h2>Wiki Loves Monuments</h2><a href="https://commons.wikimedia.org/wiki/special:uploadWizard?campaign=wlm-se-bbr&id=' + id + '&descriptionlang=sv&description=' + label + '" class="btn">Ladda upp bild</a><br><a href="http://wikimedia.se/wlm/">Vad är Wiki Loves Monuments?</a>';
   }
 }
 
@@ -155,9 +139,6 @@ if (church) {
       document.getElementById('vr-heading').remove();
       document.getElementById('vr-link').remove();
     }
-
-    var container = document.querySelector('.church div');
-    container.innerHTML = container.innerHTML + kyrksok.initWikiLovesMonuments(church.kulturarvsdata, church.label);
   });
 // only trigger 404 if we are at church.html
 } else if(window.location.pathname.indexOf('church.html') !== -1) {
