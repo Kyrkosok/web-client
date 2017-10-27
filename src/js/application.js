@@ -1,3 +1,7 @@
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+
 Element.prototype.remove = function() {
   this.parentElement.removeChild(this);
 }
