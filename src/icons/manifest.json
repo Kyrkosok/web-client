@@ -1,5 +1,6 @@
 {
-	"name": "Kyrks\u00f6k",
+	"name": "Kyrksök",
+	"short_name": "Kyrksök",
 	"icons": [
 		{
 			"src": "\/icons\/android-chrome-192x192.png",
