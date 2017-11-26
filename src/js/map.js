@@ -17,7 +17,7 @@ function renderMarkers() {
 
             var location = new L.LatLng(item.lat, item.lon, true);
             var marker = new L.Marker(location);
-            marker.bindPopup('<a href="http://kyrksok.se/church.html?church=' + item.wikidata + '">' + item.label + '</a>');
+            marker.bindPopup('<a href="church.html?church=' + item.wikidata + '">' + item.label + '</a>');
             markers.addLayer(marker);
           }
           map.addLayer(markers);
