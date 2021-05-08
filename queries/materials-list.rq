@@ -1,0 +1,15 @@
+SELECT DISTINCT ?qid ?materialLabel (COUNT(?item) AS ?count) WHERE {
+  # only pick data from churches having the basics
+  ?item wdt:P31/wdt:279* wd:Q16970 ;
+        wdt:P17 wd:Q34 ;
+        wdt:P625 [] ;
+        wdt:P18 [] .
+  [] schema:about ?item ;
+     schema:inLanguage "sv" ;
+     schema:isPartOf <https://sv.wikipedia.org/> .
+  
+  ?item wdt:P186 ?material .
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sv" }
+  BIND(REPLACE(STR(?material), "http://www.wikidata.org/entity/", "") AS ?qid)
+} GROUP BY ?qid ?materialLabel ORDER BY DESC(?count)

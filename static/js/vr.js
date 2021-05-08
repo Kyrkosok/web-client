@@ -11,11 +11,11 @@ function getUrlParameter(parameter) {
 }
 
 var vrItems = {
-  10713923: {
+  'Q10713923': {
     image: 'https://upload.wikimedia.org/wikipedia/commons/6/61/Vemdalens_kyrka_klotbild.jpg',
     commons: 'https://commons.wikimedia.org/wiki/File:Vemdalens_kyrka_klotbild.jpg',
   },
-  10501350: {
+  'Q10501350': {
     image: 'https://upload.wikimedia.org/wikipedia/commons/6/67/F%C3%B6rk%C3%A4rla_kyrka_20160421_06.jpg',
     commons: 'https://commons.wikimedia.org/wiki/File:Förkärla_kyrka_20160421_06.jpg',
   }

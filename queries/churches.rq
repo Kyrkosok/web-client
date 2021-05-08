@@ -1,0 +1,52 @@
+SELECT
+  ?qid
+  ?itemLabel
+  ?cat
+  ?kyrkanIdentifier
+  ?img
+  ?articleName
+  ?article
+  ?lat
+  ?lon
+  ?imageSource
+  ?eventExists
+WHERE {
+  {
+    SELECT DISTINCT
+      ?qid
+      ?itemLabel
+      (SAMPLE(?location) AS ?sLocation)
+      (SAMPLE(?commonsCategory) AS ?cat)
+      (SAMPLE(?kyrkanId) AS ?kyrkanIdentifier)
+      (SAMPLE(?image) AS ?img)
+      ?articleName
+      ?article
+      ?eventExists
+    WHERE {
+      ?item wdt:P31/wdt:279* wd:Q16970 ;
+            wdt:P17 wd:Q34 ;
+            wdt:P625 ?location ;
+            wdt:P18 ?image .
+
+      ?article schema:about ?item ;
+               schema:inLanguage "sv" ;
+               schema:isPartOf <https://sv.wikipedia.org/> ;
+               schema:name ?articleName .
+
+      OPTIONAL { ?item wdt:P373 ?commonsCategory }
+      OPTIONAL { ?item wdt:P5048 ?kyrkanId }
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "sv" }
+
+      BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+      BIND(EXISTS { ?item wdt:P793 [] } AS ?eventExists)
+    }
+    GROUP BY ?qid ?itemLabel ?articleName ?article ?eventExists
+  }
+
+  BIND(REPLACE(STR(?img), "http://commons.wikimedia.org/wiki/Special:FilePath/", "https://commons.wikimedia.org/wiki/File:") AS ?imageSource)
+
+  # turns out this is must faster than looking up the values
+  BIND(REPLACE(STR(?sLocation), "Point\\(|\\)", "") AS ?loc)
+  BIND(STRBEFORE(?loc, " ") AS ?lon)
+  BIND(STRAFTER(?loc, " ") AS ?lat)
+}

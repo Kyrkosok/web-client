@@ -1,0 +1,14 @@
+SELECT DISTINCT ?qid ?itemLabel WHERE {
+  # only pick data from churches having the basics
+  ?item wdt:P31/wdt:279* wd:Q16970 ;
+        wdt:P17 wd:Q34 ;
+        wdt:P625 [] ;
+        wdt:P18 [] ;
+        wdt:P149 wd:{{.}} .
+  [] schema:about ?item ;
+     schema:inLanguage "sv" ;
+     schema:isPartOf <https://sv.wikipedia.org/> .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sv" }
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+} ORDER BY ?qid

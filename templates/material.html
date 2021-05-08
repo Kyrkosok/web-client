@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="sv">
 	<head>
-		<title>Kyrksök VR</title>
+		<title>Material - Kyrksök</title>
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -18,29 +18,26 @@
 		<link rel="shortcut icon" href="icons/favicon.ico" />
 		<meta name="msapplication-config" content="icons/browserconfig.xml" />
 		<meta name="theme-color" content="#ffffff" />
-		<!--build:css css/kyrksok-vr.min.css -->
-		<link rel="stylesheet" href="css/vr.css" />
-		<!-- endbuild -->
+
+		<link rel="stylesheet" href="css/app.css" />
 	</head>
 	<body>
-		<div class="fill center-content" aria-hidden id="loading-screen">
-			<div class="loading"></div>
-		</div>
-
-		<div id="ui">
-			<div id="vr-button"></div>
-			<a href="#" id="no-vr">Testa utan headset</a><a href="https://webvr.info/">Förbered headset</a>
-		</div>
-
-		<a id="attribution" href="#">Wikimedia Commons</a>
-
-		<!--build:js js/kyrksok-vr.min.js -->
-		<script src="js/three.min.js"></script>
-		<script src="js/webvr-polyfill.js"></script>
-		<script src="js/vr-controls.js"></script>
-		<script src="js/vr-effect.js"></script>
-		<script src="js/webvr-ui.js"></script>
-		<script src="js/vr.js"></script>
-		<!-- endbuild -->
+		<main>
+			<nav class="menu">
+				<a href="map.html" class="btn">Plats</a>
+				<a href="style.html" class="btn">Stil</a>
+				<a href="material.html" class="btn">Material</a>
+			</nav>
+			<div>
+				<h1>Material</h1>
+				{{ range . }}
+				<details>
+					<summary>{{ tcase .materialLabel.String }} ({{ .count }})</summary>
+					{{ template "details.html" query "church-made-of-material" .qid.String }}
+				</details>
+				{{ end }}
+			</div>
+		</main>
+		<a class="footer" href="about.html">Om Kyrksök</a>
 	</body>
 </html>
