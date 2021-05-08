@@ -1,0 +1,10 @@
+[
+    {{ range $i, $m := $ }}
+    {{ if $i }},{{ end }}{
+        "lat": {{ (index $m "lat") }},
+        "lon": {{ (index $m "lon") }},
+        "wikidata": "{{ (index $m "qid") }}",
+        "label": "{{ (index $m "itemLabel") }}"
+    }
+    {{ end }}
+]

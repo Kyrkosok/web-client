@@ -2,7 +2,7 @@ function renderMarkers() {
   document.getElementById('loading-screen').style.display = 'block';
   var xhr = new XMLHttpRequest();
   map.getBounds();
-  xhr.open('GET', kyrksok.endpoint + '/churches/bbox?south=51.42&east=-3.38&north=70.45&west=32.12'
+  xhr.open('GET', '/map.json'
   , true);
 
   xhr.onreadystatechange = function() {
@@ -10,14 +10,14 @@ function renderMarkers() {
       document.getElementById('loading-screen').style.display = 'none';
       if (xhr.status >= 200 && xhr.status < 300) {
         var result = JSON.parse(xhr.responseText);
-        if (result.churches.length > 0) {
+        if (result.length > 0) {
 
-          for (i = 0; i < result.churches.length; i++) {
-            var item = result.churches[i];
+          for (i = 0; i < result.length; i++) {
+            var item = result[i];
 
             var location = new L.LatLng(item.lat, item.lon, true);
             var marker = new L.Marker(location);
-            marker.bindPopup('<a href="church.html?church=' + item.wikidata + '">' + item.label + '</a>');
+            marker.bindPopup('<a href="' + item.wikidata + '.html">' + item.label + '</a>');
             markers.addLayer(marker);
           }
           map.addLayer(markers);
@@ -30,8 +30,8 @@ function renderMarkers() {
 
 map = L.map('leaflet');
 
-L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors & <a href="http://openstreetmap.se/">OpenStreetMap Sverige</a>',
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
   maxZoom: 18,
   subdomains: 'abc'
 }).addTo(map);

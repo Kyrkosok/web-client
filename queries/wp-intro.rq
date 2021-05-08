@@ -1,0 +1,19 @@
+# parameterized SPARQL query, should be given the title of an article on sv-wp
+SELECT ?extract WHERE {
+  BIND("{{.}}" AS ?title)
+  SERVICE wikibase:mwapi {
+    bd:serviceParam wikibase:endpoint "sv.wikipedia.org";
+                    wikibase:api "Generator";
+                    wikibase:limit "once";
+                    mwapi:generator "allpages";
+                    mwapi:gapfrom ?title;
+                    mwapi:gapto ?title;
+                    mwapi:gaplimit 1;
+                    mwapi:prop "extracts".
+    ?rawExtract wikibase:apiOutput "extract/text()".
+    ?ns wikibase:apiOutput "@ns".
+    ?pageid wikibase:apiOutput "@pageid". 
+  }
+  
+  BIND(REPLACE(STRBEFORE(?rawExtract, "</p>"), "<[^>]*>", "") AS ?extract)
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="sv">
 	<head>
-		<title>Kyrksök</title>
+		<title>Kyrksök - Karta</title>
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -19,32 +19,31 @@
 		<meta name="msapplication-config" content="icons/browserconfig.xml" />
 		<meta name="theme-color" content="#ffffff" />
 
-		<!--build:css css/kyrksok.min.css  -->
-		<link rel="stylesheet" href="css/app.css" type="text/css" />
+		<link rel="stylesheet" href="css/app.css" />
 		<link rel="stylesheet" href="css/font.awesome.min.css" />
-		<!-- endbuild  -->
+
+		<link rel="stylesheet" href="css/leaflet.css" />
+		<link rel="stylesheet" href="css/MarkerCluster.css" />
+		<link rel="stylesheet" href="css/leaflet.locate.min.css" />
+		<link rel="stylesheet" href="css/map.css" />
 	</head>
 	<body>
-		<main class="fill center-content">
-
-			<img src="logo.svg" class="logo" aria="hidden" alt="logo">
-			<h1 class="sr-only">Kyrksök</h1>
-
-			<div class="search-bar">
-				<input type="text" id="search-box" autofocus>
-				<input type="button" value="Sök" id="search-btn"><br><br>
-				<a href="map.html" class="btn" style="max-width: 195px;">Karta <i class="fa fa-map-o" aria-hidden="true"></i></a>
-			</div>
-			<a class="footer" href="about.html" style="bottom: 0; position: absolute; left: 0; width: 100%;">Om Kyrksök</a>
-
-			<nav class="search-results hidden fill" id="results"></nav>
+		<main class="fill">
+			<nav class="menu">
+				<a href="map.html" class="btn">Plats</a>
+				<a href="style.html" class="btn">Stil</a>
+				<a href="material.html" class="btn">Material</a>
+			</nav>
+			<div id="leaflet"></div>
 			<div class="hidden fill center-content" aria-hidden id="loading-screen">
 				<div class="loading"></div>
 			</div>
+			<a class="footer" href="about.html" style="bottom: 0; position: absolute; left: 0; width: 100%;">Om Kyrksök</a>
 		</main>
 
-		<!--build:js js/kyrksok.min.js -->
-		<script src="js/application.js"></script>
-		<!-- endbuild  -->
+		<script src="js/leaflet.js"></script>
+		<script src="js/leaflet.markercluster.js"></script>
+		<script src="js/leaflet.locate.min.js"></script>
+		<script src="js/map.js"></script>
 	</body>
 </html>
