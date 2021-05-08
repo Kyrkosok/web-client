@@ -1,0 +1,10 @@
+SELECT ?itemLabel (YEAR(?dob) AS ?doby) (YEAR(?dod) AS ?dody) ?article WHERE {
+  ?item wdt:P119/wdt:P361* wd:{{.}}.
+  OPTIONAL { ?item wdt:P569 ?dob }
+  OPTIONAL { ?item wdt:P570 ?dod }
+  OPTIONAL {
+    ?article schema:about ?item ;
+             schema:isPartOf <https://sv.wikipedia.org/> .
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "sv,en" }
+}

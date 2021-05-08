@@ -1,0 +1,12 @@
+{{ if . }}
+<h2>Kända personer begravda här</h2>
+<ul>
+{{ range . }}
+{{ if .article }}
+  <li><a href="{{ .article }}">{{ .itemLabel }} {{ if .doby }}{{ .doby }}{{ end }}{{ if .dody }}-{{ .dody }}{{ end }}</a></li>
+{{ else }}
+  <li>{{ .itemLabel }} {{ if .doby }}{{ .doby }}{{ end }}{{ if .dody }}-{{ .dody }}{{ end }}</li>
+{{ end }}
+{{ end }}
+</ul>
+{{ end }}
