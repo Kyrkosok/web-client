@@ -1,4 +1,4 @@
-SELECT ?itemLabel (YEAR(?dob) AS ?doby) (YEAR(?dod) AS ?dody) ?article WHERE {
+SELECT DISTINCT ?itemLabel (YEAR(?dob) AS ?doby) (YEAR(?dod) AS ?dody) ?article WHERE {
   ?item wdt:P119/wdt:P361* wd:{{.}}.
   OPTIONAL { ?item wdt:P569 ?dob }
   OPTIONAL { ?item wdt:P570 ?dod }
