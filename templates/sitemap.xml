@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://kyrksok.se/map.html</loc>
+    </url>
+    <url>
+        <loc>https://kyrksok.se/style.html</loc>
+    </url>
+    <url>
+        <loc>https://kyrksok.se/about.html</loc>
+    </url>
+    <url>
+        <loc>https://kyrksok.se/material.html</loc>
+    </url>
+    {{ range . }}
+    <url>
+        <loc>https://kyrksok.se/{{ .qid }}.html</loc>
+    </url>
+    {{ end }}
+</urlset>
