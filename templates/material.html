@@ -1,43 +1,27 @@
-<!DOCTYPE HTML>
-<html lang="sv">
-	<head>
-		<title>Material - Kyrksök</title>
+{{ template "layout" . }}
 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
+{{ define "title" }}Material - Kyrksök{{ end }}
 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="mobile-web-app-capable" content="yes" />
+{{ define "css" }}{{""}}{{ end }}
 
-		<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" />
-		<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
-		<link rel="manifest" href="icons/manifest.json" />
-		<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5" />
-		<link rel="shortcut icon" href="icons/favicon.ico" />
-		<meta name="msapplication-config" content="icons/browserconfig.xml" />
-		<meta name="theme-color" content="#ffffff" />
+{{ define "main-classes" }}{{""}}{{ end }}
 
-		<link rel="stylesheet" href="css/app.css" />
-	</head>
-	<body>
-		<main>
-			<nav class="menu">
-				<a href="map.html" class="btn">Plats</a>
-				<a href="style.html" class="btn">Stil</a>
-				<a href="material.html" class="btn">Material</a>
-			</nav>
-			<div>
-				<h1>Material</h1>
-				{{ range . }}
-				<details>
-					<summary>{{ tcase .materialLabel.String }} ({{ .count }})</summary>
-					{{ template "details.html" query "church-made-of-material" .qid.String }}
-				</details>
-				{{ end }}
-			</div>
-		</main>
-		<a class="footer" href="about.html">Om Kyrksök</a>
-	</body>
-</html>
+{{ define "content" }}
+<nav class="menu">
+	<a href="map.html" class="btn">Plats</a>
+	<a href="style.html" class="btn">Stil</a>
+	<a href="material.html" class="btn">Material</a>
+</nav>
+<div>
+	<h1>Material</h1>
+	{{ range . }}
+	<details>
+		<summary>{{ tcase .materialLabel.String }} ({{ .count }})</summary>
+		{{ template "details.html" query "church-made-of-material" .qid.String }}
+	</details>
+	{{ end }}
+</div>
+<a class="footer" href="about.html">Om Kyrksök</a>
+{{ end }}
+
+{{ define "javascript" }}{{""}}{{ end }}
