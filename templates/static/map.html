@@ -1,0 +1,35 @@
+{{ template "layout" . }}
+
+{{ define "title" }}Kyrksök - Karta{{ end }}
+
+{{ define "css" }}
+<link rel="stylesheet" href="css/font.awesome.min.css" />
+
+<link rel="stylesheet" href="css/leaflet.css" />
+<link rel="stylesheet" href="css/MarkerCluster.css" />
+<link rel="stylesheet" href="css/leaflet.locate.min.css" />
+<link rel="stylesheet" href="css/map.css" />
+{{ end }}
+
+
+{{ define "main-classes" }}fill{{ end }}
+
+{{ define "content" }}
+<nav class="menu">
+	<a href="map.html" class="btn">Plats</a>
+	<a href="style.html" class="btn">Stil</a>
+	<a href="material.html" class="btn">Material</a>
+</nav>
+<div id="leaflet"></div>
+<div class="hidden fill center-content" aria-hidden id="loading-screen">
+	<div class="loading"></div>
+</div>
+<a class="footer" href="about.html" style="bottom: 0; position: absolute; left: 0; width: 100%;">Om Kyrksök</a>
+{{ end }}
+
+{{ define "javascript" }}
+<script src="js/leaflet.js"></script>
+<script src="js/leaflet.markercluster.js"></script>
+<script src="js/leaflet.locate.min.js"></script>
+<script src="js/map.js"></script>
+{{ end }}
