@@ -1,66 +1,50 @@
-<!DOCTYPE HTML>
-<html lang="sv">
-	<head>
-		<title>{{ .itemLabel }} - Kyrksök</title>
+{{ template "layout" . }}
 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
+{{ define "title" }}{{ .itemLabel }} - Kyrksök{{ end }}
 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="mobile-web-app-capable" content="yes" />
+{{ define "css" }}{{""}}{{ end }}
 
-		<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" />
-		<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
-		<link rel="manifest" href="icons/manifest.json" />
-		<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5" />
-		<link rel="shortcut icon" href="icons/favicon.ico" />
-		<meta name="msapplication-config" content="icons/browserconfig.xml" />
-		<meta name="theme-color" content="#ffffff" />
+{{ define "main-classes" }}{{""}}{{ end }}
 
-		<link rel="stylesheet" href="css/app.css" type="text/css" />
-	</head>
-	<body>
-		<main>
-			<nav class="menu">
-				<a href="map.html" class="btn">Plats</a>
-				<a href="style.html" class="btn">Stil</a>
-				<a href="material.html" class="btn">Material</a>
-			</nav>
-			<div class="church">
-				<header>
-					<img src="{{ .img }}" alt="Bild av {{ .itemLabel }}">
-					<a href="{{ .imageSource }}">Wikimedia Commons</a>
-				</header>
+{{ define "content" }}
+<nav class="menu">
+	<a href="map.html" class="btn">Plats</a>
+	<a href="style.html" class="btn">Stil</a>
+	<a href="material.html" class="btn">Material</a>
+</nav>
+<div class="church">
+	<header>
+		<img src="{{ .img }}" alt="Bild av {{ .itemLabel }}">
+		<a href="{{ .imageSource }}">Wikimedia Commons</a>
+	</header>
 
-				<div>
-					<h1>{{ .itemLabel }}</h1>
-					{{ $wp_intro := query "wp-intro" .articleName.String }}
-					<p id="church-wikipedia">{{ range $wp_intro }}{{ .extract }}{{ end }}</p>
-					<a id="church-wikipedia-link" href="{{ .article }}">Läs mer på Wikipedia</a>
+	<div>
+		<h1>{{ .itemLabel }}</h1>
+		{{ $wp_intro := query "wp-intro" .articleName.String }}
+		<p id="church-wikipedia">{{ range $wp_intro }}{{ .extract }}{{ end }}</p>
+		<a id="church-wikipedia-link" href="{{ .article }}">Läs mer på Wikipedia</a>
 
-					<div id="vr-content" style="display: none">
-						<h2>Utforska i VR</h2>
-						<a href="#" class="btn" id="vr-link">VR-vy</a>
-					</div>
+		<div id="vr-content" style="display: none">
+			<h2>Utforska i VR</h2>
+			<a href="#" class="btn" id="vr-link">VR-vy</a>
+		</div>
 
-					{{ if (eq .eventExists.String "true") }}
-					<h2>Tidslinje</h2>
-					<iframe style="width: 100%; height: 50vh; border: none;" src="https://query.wikidata.org/embed.html#%23defaultView%3ATimeline%7B%22hide%22%3A%5B%22%3FeventDate%22%5D%7D%0ASELECT%20DISTINCT%20%3Flabel%20%3FdateLabel%20%3FeventDate%20WHERE%20%7B%0A%20%20%7B%0A%20%20%20%20SELECT%20%2a%20WHERE%20%7B%0A%20%20%20%20%20%20wd%3A{{ .qid }}%20p%3AP793%20%3Fevent.%0A%20%20%20%20%20%20%3Fevent%20ps%3AP793%20%3FeventType.%0A%20%20%20%20%20%20%7B%20%3Fevent%20pqv%3AP580%20%3FeventNode.%20%7D%20UNION%20%7B%20%3Fevent%20pqv%3AP585%20%3FeventNode.%20%7D%0A%20%20%20%20%20%20%3FeventNode%20wikibase%3AtimeValue%20%3FeventDate%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wikibase%3AtimePrecision%20%3FeventPrecision.%0A%20%20%0A%20%20%20%20%20%20OPTIONAL%20%7B%20%3Fevent%20pq%3AP518%20%3Fpart%20%7D%0A%0A%20%20%20%20%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22sv%22.%0A%20%20%20%20%20%20%20%20%3Fpart%20rdfs%3Alabel%20%3FpartLabel%20.%0A%20%20%20%20%20%20%20%20%3FeventType%20rdfs%3Alabel%20%3FeventTypeLabel%20.%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%0A%20%20BIND%28YEAR%28%3FeventDate%29%20AS%20%3Fyear%29%0A%20%20BIND%28IF%28%3FeventPrecision%20%3C%209%2C%20%22-talet%22%2C%20%22%22%29%20AS%20%3FyearSuffix%29%0A%20%20BIND%28CONCAT%28STR%28%3Fyear%29%2C%20%3FyearSuffix%29%20AS%20%3FdateLabel%29%0A%0A%20%20BIND%28IF%28BOUND%28%3Fpart%29%2C%20CONCAT%28%3FeventTypeLabel%2C%20%22%20%28%22%2C%20%3FpartLabel%2C%20%22%29%22%29%2C%20%3FeventTypeLabel%29%20AS%20%3Flabel%29%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups" ></iframe>
-					{{ end }}
+		{{ if (eq .eventExists.String "true") }}
+		<h2>Tidslinje</h2>
+		<iframe style="width: 100%; height: 50vh; border: none;" src="https://query.wikidata.org/embed.html#%23defaultView%3ATimeline%7B%22hide%22%3A%5B%22%3FeventDate%22%5D%7D%0ASELECT%20DISTINCT%20%3Flabel%20%3FdateLabel%20%3FeventDate%20WHERE%20%7B%0A%20%20%7B%0A%20%20%20%20SELECT%20%2a%20WHERE%20%7B%0A%20%20%20%20%20%20wd%3A{{ .qid }}%20p%3AP793%20%3Fevent.%0A%20%20%20%20%20%20%3Fevent%20ps%3AP793%20%3FeventType.%0A%20%20%20%20%20%20%7B%20%3Fevent%20pqv%3AP580%20%3FeventNode.%20%7D%20UNION%20%7B%20%3Fevent%20pqv%3AP585%20%3FeventNode.%20%7D%0A%20%20%20%20%20%20%3FeventNode%20wikibase%3AtimeValue%20%3FeventDate%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wikibase%3AtimePrecision%20%3FeventPrecision.%0A%20%20%0A%20%20%20%20%20%20OPTIONAL%20%7B%20%3Fevent%20pq%3AP518%20%3Fpart%20%7D%0A%0A%20%20%20%20%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22sv%22.%0A%20%20%20%20%20%20%20%20%3Fpart%20rdfs%3Alabel%20%3FpartLabel%20.%0A%20%20%20%20%20%20%20%20%3FeventType%20rdfs%3Alabel%20%3FeventTypeLabel%20.%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%0A%20%20BIND%28YEAR%28%3FeventDate%29%20AS%20%3Fyear%29%0A%20%20BIND%28IF%28%3FeventPrecision%20%3C%209%2C%20%22-talet%22%2C%20%22%22%29%20AS%20%3FyearSuffix%29%0A%20%20BIND%28CONCAT%28STR%28%3Fyear%29%2C%20%3FyearSuffix%29%20AS%20%3FdateLabel%29%0A%0A%20%20BIND%28IF%28BOUND%28%3Fpart%29%2C%20CONCAT%28%3FeventTypeLabel%2C%20%22%20%28%22%2C%20%3FpartLabel%2C%20%22%29%22%29%2C%20%3FeventTypeLabel%29%20AS%20%3Flabel%29%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups" ></iframe>
+		{{ end }}
 
-					{{ template "buried-here.html" query "buried-here" .qid.String }}
+		{{ template "buried-here.html" query "buried-here" .qid.String }}
 
-					<h2>Läs mer</h2>
-					{{ if .cat }}<a href="https://commons.wikimedia.org/wiki/Category:{{ .cat }}" class="btn">Bilder i Wikimedia Commons</a>{{ end }}
-					{{ if .kyrkanIdentifier }}<a href="https://www.svenskakyrkan.se/{{ .kyrkanIdentifier }}" class="btn">Svenska kyrkan</a>{{ end }}
-					<a href="https://wikidata.org/wiki/{{ .qid }}" class="btn">Wikidata</a>
-				</div>
-			</div>
-		</main>
-		<a class="footer" href="about.html">Om Kyrksök</a>
+		<h2>Läs mer</h2>
+		{{ if .cat }}<a href="https://commons.wikimedia.org/wiki/Category:{{ .cat }}" class="btn">Bilder i Wikimedia Commons</a>{{ end }}
+		{{ if .kyrkanIdentifier }}<a href="https://www.svenskakyrkan.se/{{ .kyrkanIdentifier }}" class="btn">Svenska kyrkan</a>{{ end }}
+		<a href="https://wikidata.org/wiki/{{ .qid }}" class="btn">Wikidata</a>
+	</div>
+</div>
+<a class="footer" href="about.html">Om Kyrksök</a>
+{{ end }}
 
-		<script src="js/application.js"></script>
-	</body>
-</html>
+{{ define "javascript" }}
+<script src="js/application.js"></script>
+{{ end }}
