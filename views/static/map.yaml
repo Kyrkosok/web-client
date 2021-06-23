@@ -1,0 +1,2 @@
+output: "map.html"
+template: "static/map.html"

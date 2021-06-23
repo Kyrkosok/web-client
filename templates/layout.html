@@ -1,7 +1,8 @@
+{{ define "layout" }}
 <!DOCTYPE HTML>
 <html lang="sv">
 	<head>
-		<title>Material - Kyrksök</title>
+		<title>{{ block "title" . }}{{ end }}</title>
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -20,24 +21,15 @@
 		<meta name="theme-color" content="#ffffff" />
 
 		<link rel="stylesheet" href="css/app.css" />
+
+		{{ block "css" . }}{{ end }}
 	</head>
 	<body>
-		<main>
-			<nav class="menu">
-				<a href="map.html" class="btn">Plats</a>
-				<a href="style.html" class="btn">Stil</a>
-				<a href="material.html" class="btn">Material</a>
-			</nav>
-			<div>
-				<h1>Material</h1>
-				{{ range . }}
-				<details>
-					<summary>{{ tcase .materialLabel.String }} ({{ .count }})</summary>
-					{{ template "details.html" query "church-made-of-material" .qid.String }}
-				</details>
-				{{ end }}
-			</div>
+		<main class="{{ block "main-classes" . }}{{ end }}">
+			{{ block "content" . }}{{ end }}
 		</main>
-		<a class="footer" href="about.html">Om Kyrksök</a>
+
+		{{ block "javascript" . }}{{ end }}
 	</body>
 </html>
+{{ end }}

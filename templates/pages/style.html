@@ -1,0 +1,27 @@
+{{ template "layout" . }}
+
+{{ define "title" }}Arkitekturstil - Kyrksök{{ end }}
+
+{{ define "css" }}{{""}}{{ end }}
+
+{{ define "main-classes" }}{{""}}{{ end }}
+
+{{ define "content" }}
+<nav class="menu">
+	<a href="map.html" class="btn">Plats</a>
+	<a href="style.html" class="btn">Stil</a>
+	<a href="material.html" class="btn">Material</a>
+</nav>
+<div>
+	<h1>Arkitekturstil</h1>
+	{{ range . }}
+	<details>
+		<summary>{{ tcase .styleLabel.String }} ({{ .count }})</summary>
+		{{ template "details.html" query "church-by-style" .qid.String }}
+	</details>
+	{{ end }}
+</div>
+<a class="footer" href="about.html">Om Kyrksök</a>
+{{ end }}
+
+{{ define "javascript" }}{{""}}{{ end }}

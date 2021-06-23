@@ -1,0 +1,21 @@
+{{ template "layout" . }}
+
+{{ define "title" }}Kyrksök{{ end }}
+
+{{ define "css" }}{{""}}{{ end }}
+
+{{ define "main-classes" }}fill center-content{{ end }}
+
+{{ define "content" }}
+<img src="logo.svg" class="logo" aria="hidden" alt="logo">
+<h1 class="sr-only">Kyrksök</h1>
+
+<nav class="menu">
+	<a href="map.html" class="btn">Plats</a>
+	<a href="style.html" class="btn">Stil</a>
+	<a href="material.html" class="btn">Material</a>
+</nav>
+<a class="footer" href="about.html" style="bottom: 0; position: absolute; left: 0; width: 100%;">Om Kyrksök</a>
+{{ end }}
+
+{{ define "javascript" }}{{""}}{{ end }}

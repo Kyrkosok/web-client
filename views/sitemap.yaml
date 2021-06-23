@@ -1,4 +1,4 @@
 ---
   output: "sitemap.xml"
   query: "churches.rq"
-  template: "sitemap.xml"
+  template: "pages/sitemap.xml"
