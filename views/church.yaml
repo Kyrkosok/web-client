@@ -1,4 +1,4 @@
 ---
   output: "{{qid}}.html"
   query: "churches.rq"
-  template: "church.html"
+  template: "pages/church.html"

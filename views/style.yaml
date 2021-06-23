@@ -1,4 +1,4 @@
 ---
   output: "style.html"
   query: "styles.rq"
-  template: "style.html"
+  template: "pages/style.html"
