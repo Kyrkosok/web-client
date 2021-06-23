@@ -1,0 +1,2 @@
+output: "about.html"
+template: "static/about.html"
