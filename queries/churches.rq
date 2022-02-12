@@ -10,6 +10,7 @@ SELECT
   ?lon
   ?imageSource
   ?eventExists
+  ?bebygreg
 WHERE {
   {
     SELECT DISTINCT
@@ -19,6 +20,7 @@ WHERE {
       (SAMPLE(?commonsCategory) AS ?cat)
       (SAMPLE(?kyrkanId) AS ?kyrkanIdentifier)
       (SAMPLE(?image) AS ?img)
+      (SAMPLE(?bebygreg) AS ?bebygreg)
       ?articleName
       ?article
       ?eventExists
@@ -35,6 +37,11 @@ WHERE {
 
       OPTIONAL { ?item wdt:P373 ?commonsCategory }
       OPTIONAL { ?item wdt:P5048 ?kyrkanId }
+      OPTIONAL { 
+        ?item wdt:P1260 ?bbr .
+        FILTER(STRSTARTS(?bbr, "raa/bbr"))
+        BIND(STRAFTER(STRAFTER(?bbr, "raa/"), "/") AS ?bebygreg)
+      }
       SERVICE wikibase:label { bd:serviceParam wikibase:language "sv" }
 
       BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
@@ -50,3 +57,4 @@ WHERE {
   BIND(STRBEFORE(?loc, " ") AS ?lon)
   BIND(STRAFTER(?loc, " ") AS ?lat)
 }
+ORDER BY ?qid

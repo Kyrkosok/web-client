@@ -20,6 +20,7 @@
 
 	<div>
 		<h1>{{ .itemLabel }}</h1>
+		{{ if .bebygreg }}<small><a href="https://commons.wikimedia.org/w/index.php?title=Special:UploadWizard&campaign=Byggnadsminnen&id={{ .bebygreg }}">Ladda upp bild</a></small>{{ end }}
 		{{ $wp_intro := query "church-specific/wp-intro.rq" .articleName.String }}
 		<p id="church-wikipedia">{{ range $wp_intro }}{{ .extract }}{{ end }}</p>
 		<a id="church-wikipedia-link" href="{{ .article }}">Läs mer på Wikipedia</a>
