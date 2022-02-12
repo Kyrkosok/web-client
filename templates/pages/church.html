@@ -20,7 +20,7 @@
 
 	<div>
 		<h1>{{ .itemLabel }}</h1>
-		{{ $wp_intro := query "church-specific/wp-intro" .articleName.String }}
+		{{ $wp_intro := query "church-specific/wp-intro.rq" .articleName.String }}
 		<p id="church-wikipedia">{{ range $wp_intro }}{{ .extract }}{{ end }}</p>
 		<a id="church-wikipedia-link" href="{{ .article }}">Läs mer på Wikipedia</a>
 
@@ -34,7 +34,7 @@
 		<iframe style="width: 100%; height: 50vh; border: none;" src="https://query.wikidata.org/embed.html#%23defaultView%3ATimeline%7B%22hide%22%3A%5B%22%3FeventDate%22%5D%7D%0ASELECT%20DISTINCT%20%3Flabel%20%3FdateLabel%20%3FeventDate%20WHERE%20%7B%0A%20%20%7B%0A%20%20%20%20SELECT%20%2a%20WHERE%20%7B%0A%20%20%20%20%20%20wd%3A{{ .qid }}%20p%3AP793%20%3Fevent.%0A%20%20%20%20%20%20%3Fevent%20ps%3AP793%20%3FeventType.%0A%20%20%20%20%20%20%7B%20%3Fevent%20pqv%3AP580%20%3FeventNode.%20%7D%20UNION%20%7B%20%3Fevent%20pqv%3AP585%20%3FeventNode.%20%7D%0A%20%20%20%20%20%20%3FeventNode%20wikibase%3AtimeValue%20%3FeventDate%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wikibase%3AtimePrecision%20%3FeventPrecision.%0A%20%20%0A%20%20%20%20%20%20OPTIONAL%20%7B%20%3Fevent%20pq%3AP518%20%3Fpart%20%7D%0A%0A%20%20%20%20%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22sv%22.%0A%20%20%20%20%20%20%20%20%3Fpart%20rdfs%3Alabel%20%3FpartLabel%20.%0A%20%20%20%20%20%20%20%20%3FeventType%20rdfs%3Alabel%20%3FeventTypeLabel%20.%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%0A%20%20BIND%28YEAR%28%3FeventDate%29%20AS%20%3Fyear%29%0A%20%20BIND%28IF%28%3FeventPrecision%20%3C%209%2C%20%22-talet%22%2C%20%22%22%29%20AS%20%3FyearSuffix%29%0A%20%20BIND%28CONCAT%28STR%28%3Fyear%29%2C%20%3FyearSuffix%29%20AS%20%3FdateLabel%29%0A%0A%20%20BIND%28IF%28BOUND%28%3Fpart%29%2C%20CONCAT%28%3FeventTypeLabel%2C%20%22%20%28%22%2C%20%3FpartLabel%2C%20%22%29%22%29%2C%20%3FeventTypeLabel%29%20AS%20%3Flabel%29%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups" ></iframe>
 		{{ end }}
 
-		{{ template "buried-here.html" query "church-specific/buried-here" .qid.String }}
+		{{ include "includes/buried-here.html" (query "church-specific/buried-here.rq" .qid.String) }}
 
 		<h2>Läs mer</h2>
 		{{ if .cat }}<a href="https://commons.wikimedia.org/wiki/Category:{{ .cat }}" class="btn">Bilder i Wikimedia Commons</a>{{ end }}

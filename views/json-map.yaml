@@ -1,4 +1,0 @@
----
-  output: "map.json"
-  query: "churches.rq"
-  template: "pages/map.json"

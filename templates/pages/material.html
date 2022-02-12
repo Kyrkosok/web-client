@@ -17,7 +17,7 @@
 	{{ range . }}
 	<details>
 		<summary>{{ tcase .materialLabel.String }} ({{ .count }})</summary>
-		{{ template "details.html" query "church-made-of-material" .qid.String }}
+		{{ include "includes/details.html" (query "church-made-of-material.rq" .qid.String) }}
 	</details>
 	{{ end }}
 </div>

@@ -1,4 +1,0 @@
----
-  output: "material.html"
-  query: "materials-list.rq"
-  template: "pages/material.html"

@@ -1,4 +1,0 @@
----
-  output: "style.html"
-  query: "styles.rq"
-  template: "pages/style.html"
